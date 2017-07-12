@@ -5,7 +5,7 @@ class I386ElfBinutils < Formula
   url 'http://ftp.gnu.org/gnu/binutils/binutils-2.23.tar.gz'
   sha256 '7909a08eabdbaac0f7a22e9ede82a66ba70acd50629b045e705af864eef10b65'
 
-  depends_on 'gcc7' => :build
+  depends_on 'gcc71' => :build
 
   def install
     ENV['CC'] = '/usr/local/bin/gcc-7.1'
