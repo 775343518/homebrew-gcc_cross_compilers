@@ -1,6 +1,6 @@
 require 'formula'
 
-class I386ElfGcc < Formula
+class I386ElfGcc < Formulary
   homepage 'http://gcc.gnu.org'
   url 'http://ftpmirror.gnu.org/gcc/gcc-7.1.0/gcc-7.1.0.tar.bz2'
   mirror 'http://ftp.gnu.org/gnu/gcc/gcc-7.1.0/gcc-7.1.0.tar.bz2'
@@ -13,7 +13,7 @@ class I386ElfGcc < Formula
   depends_on 'i386-elf-binutils'
 
   def install
-    binutils = Formula.factory 'i386-elf-binutils'
+    binutils = Formulary.factory 'i386-elf-binutils'
 
     ENV['CC'] = '/usr/local/bin/gcc-7.1'
     ENV['CXX'] = '/usr/local/bin/g++-7.1'
@@ -26,9 +26,9 @@ class I386ElfGcc < Formula
                              "--prefix=#{prefix}",
                              "--enable-languages=c",
                              "--without-headers",
-                             "--with-gmp=#{Formula["gmp"].opt_prefix}",
-                             "--with-mpfr=#{Formula["mpfr"].opt_prefix}",
-                             "--with-mpc=#{Formula["libmpc"].opt_prefix}"
+                             "--with-gmp=#{Formulary["gmp"].opt_prefix}",
+                             "--with-mpfr=#{Formulary["mpfr"].opt_prefix}",
+                             "--with-mpc=#{Formulary["libmpc"].opt_prefix}"
       system 'make all-gcc'
       system 'make install-gcc'
       FileUtils.ln_sf binutils.prefix/"i386-elf", prefix/"i386-elf"
